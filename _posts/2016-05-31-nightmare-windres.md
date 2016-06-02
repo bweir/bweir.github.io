@@ -46,7 +46,7 @@ So I tried lots of things:
 
 - I tried reinstalling Visual Studio, because I figure it might have deleted `windows.h` somehow. No luck.
 - I tried installing the Windows SDK because StackOverflow told me it might contain the fabled header. I've never installed the SDK before so I didn't have high hopes for this one.
-- I tried reinstalling MinGW because may it was corrupted somehow.
+- I tried reinstalling MinGW because maybe it was corrupted somehow.
 - I tried reinstalling Qt because it had provided the MinGW installation to begin with, so maybe something was wrong with it.
 
 But none of these seemed to work!
@@ -96,7 +96,7 @@ AHHHHHH!!!! WHY, oh WHY is `windres.exe` coming from the FreePascal (`FPC`) inst
 
 ## The Fix
 
-As it turns out, FreePascal was apparently providing its own copy of `windres.exe`, which is clearly not the same one that Qt provided. Not only that, but I guess I had clicked an option at some point to install FreePascal into the system path, which apparently supersedes the environment `PATH` variable set by the user. That means that any executables with the same name in the FreePascal and Qt installations would **always** be provided by FreePascal, which is absolutely NOT what we want.
+As it turns out, FreePascal was apparently providing its own copy of `windres.exe`, which is clearly not the same one that Qt provided. Not only that, but I guess I had clicked on an option at some point to install FreePascal into the system path, which apparently supersedes the environment `PATH` variable set by the user. That means that any executables with the same name in the FreePascal and Qt installations would **always** be provided by FreePascal, which is absolutely NOT what we want.
 
 So I uninstalled FreePascal, and look at this fabulous result. `windres.exe` is immediately provided by Qt.
 
